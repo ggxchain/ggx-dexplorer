@@ -101,13 +101,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const subsNewBlock = useSelector(selectSubsNewBlock)
   const subsTxEvent = useSelector(selectSubsTxEvent)
 
-  const handleDisconnect = () => {
-    subsNewBlock?.unsubscribe()
-    subsTxEvent?.unsubscribe()
-    window.localStorage.removeItem(LS_RPC_ADDRESS)
-    window.location.replace('/')
-  }
-
   return (
     <Box
       bg={useColorModeValue('light-container', 'dark-container')}
@@ -161,16 +154,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             </NavItem>
           ))}
         </Box>
-        <Flex justifyContent="center" mb="4">
-          <Button
-            leftIcon={<FiLogOut />}
-            colorScheme="red"
-            variant="outline"
-            onClick={handleDisconnect}
-          >
-            Disconnect
-          </Button>
-        </Flex>
       </Flex>
     </Box>
   )

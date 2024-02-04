@@ -1,4 +1,5 @@
 export const LS_RPC_ADDRESS = 'RPC_ADDRESS'
+export const COSMOS_GGX_ADDRESS = 'https://cosmos-rpc.dev.ggxchain.io'
 export const GOV_PARAMS_TYPE = {
   VOTING: 'voting',
   DEPOSIT: 'deposit',

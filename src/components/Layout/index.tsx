@@ -22,7 +22,7 @@ import {
 } from '@/store/streamSlice'
 import { NewBlockEvent } from '@cosmjs/tendermint-rpc'
 import { TxEvent } from '@cosmjs/tendermint-rpc'
-import { LS_RPC_ADDRESS } from '@/utils/constant'
+import { LS_RPC_ADDRESS, COSMOS_GGX_ADDRESS } from '@/utils/constant'
 import { validateConnection, connectWebsocketClient } from '@/rpc/client'
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -48,7 +48,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (isLoading) {
-      const address = window.localStorage.getItem(LS_RPC_ADDRESS)
+      const address =
+        window.localStorage.getItem(LS_RPC_ADDRESS) || COSMOS_GGX_ADDRESS
+
       if (!address) {
         setIsLoading(false)
         return
@@ -106,7 +108,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       ) : (
         <></>
       )}
-      {!connectState && !isLoading ? <Connect /> : <></>}
     </>
   )
 }
